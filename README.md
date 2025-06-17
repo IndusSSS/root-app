@@ -39,3 +39,19 @@ flowchart TD
         GitHubActions-->|Signed AAB / APK|Phone
     end
 # root-app
+
+## Build
+
+```bash
+./gradlew assembleDebug
+```
+
+## Flashing / Headless Start
+
+To start the service on a display-less device after flashing:
+
+```bash
+adb shell am start -n com.smartsecurity.edge/.MainActivity --es kiosk true
+```
+
+This launches the app in kiosk/headless mode based on the stored flag in DataStore.
