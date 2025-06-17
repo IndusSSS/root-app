@@ -39,3 +39,5 @@ flowchart TD
         GitHubActions-->|Signed AAB / APK|Phone
     end
 # root-app
+\n## Build Badges\n![build](https://img.shields.io/badge/build-pending-lightgrey) ![lint](https://img.shields.io/badge/lint-pending-lightgrey) ![size](https://img.shields.io/badge/fullOptionsDebug--size-pending-lightgrey)\n
+

@@ -1,0 +1,10 @@
+features:
+  ai_advanced: false
+  nearby22: false
+  privacy_sandbox: false
+  local_srt: false
+  rust_crypto: false
+  dynamic_features: false
+  instant_on: false
+  kiosk_mode: false
+
