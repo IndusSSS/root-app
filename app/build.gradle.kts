@@ -6,23 +6,27 @@ plugins {
 }
 
 android {
-    namespace = "com.smartsecurity.edge"
-    compileSdk = 35
+    namespace = "com.smartsecurity.rootapp"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.smartsecurity.edge"
-        minSdk = 33
-        targetSdk = 35
+        applicationId = "com.smartsecurity.rootapp"
+        minSdk = 24
+        targetSdk = 34
         versionCode = 1
         versionName = "0.1-alpha"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("Boolean", "LOG_CPU_TEMP", "true")
+        buildConfigField("Boolean", "LOG_IMU", "true")
+        buildConfigField("Boolean", "STREAM_VIDEO", "true")
+        buildConfigField("Boolean", "OFFLINE_CACHE", "true")
     }
 
     buildTypes {
         getByName("debug") {
             isDebuggable = true
         }
-        getByName("release") {
+        create("rootRelease") {
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -36,7 +40,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.5"
+        kotlinCompilerExtensionVersion = "1.7.0"
     }
 
     kotlinOptions {
@@ -51,19 +55,16 @@ android {
 }
 
 dependencies {
-    implementation(project(":common"))
-    implementation(project(":device-core"))
-    implementation(project(":ai-pipeline"))
-    implementation(project(":network"))
-    implementation(project(":ui"))
-    implementation(project(":embedded-server"))
-    implementation(project(":cloud-sync"))
+    implementation(project(":core"))
+    implementation(project(":telemetry"))
+    implementation(project(":stream"))
+    implementation(project(":storage"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.2")
-    implementation("androidx.compose.ui:ui:1.5.4")
-    implementation("androidx.compose.material3:material3:1.2.0")
+    implementation("androidx.compose.ui:ui:1.7.0")
+    implementation("androidx.compose.material3:material3:1.7.0")
     implementation("androidx.navigation:navigation-compose:2.7.5")
 
     implementation("com.google.dagger:hilt-android:2.48")

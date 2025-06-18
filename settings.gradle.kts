@@ -13,9 +13,13 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "pocket-edge"
+rootProject.name = "root-app"
 include(
     ":app",
+    ":core",
+    ":telemetry",
+    ":stream",
+    ":storage",
     ":common",
     ":device-core",
     ":ai-pipeline",
