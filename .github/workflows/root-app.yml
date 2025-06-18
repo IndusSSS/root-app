@@ -1,0 +1,27 @@
+name: Android CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        build_type: [Debug, RootRelease]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build
+        run: ./gradlew assemble${{ matrix.build_type }}
+      - name: Upload AAB
+        if: matrix.build_type == 'RootRelease'
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-bundle
+          path: app/build/outputs/bundle/rootRelease/app-rootRelease.aab

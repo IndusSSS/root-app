@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.smartsecurity.edge" xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest package="com.smartsecurity.rootapp" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.BODY_SENSORS" />
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-    <uses-permission android:name="android.permission.NFC" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-        android:name=".EdgeApp"
+        android:name="com.smartsecurity.rootapp.RootApp"
         android:exported="true"
-        android:label="Pocket Edge"
+        android:label="Root App"
         android:theme="@style/Theme.App">
-        <receiver android:name=".BootReceiver" android:exported="false">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-        <service android:name=".EdgeCoreService" android:exported="false" />
-        <activity android:name=".MainActivity"
+        <service android:name="com.smartsecurity.rootapp.telemetry.SensorService" android:exported="false" />
+        <activity android:name="com.smartsecurity.rootapp.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
